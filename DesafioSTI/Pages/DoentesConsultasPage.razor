@@ -35,13 +35,13 @@
     </div>
 }
 
-@if (verificouIda.HasValue)
+@if (verificouIda.HasValue==true)
 {
     <div class="alert alert-info" role="alert">
         O doente compareceu à consulta!
     </div>
 }
-else if (verificouIda.HasValue == false)
+else if (verificouIda.HasValue==false)
 {
     <div class="alert alert-warning" role="alert">
         O doente não compareceu à consulta.

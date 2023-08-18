@@ -20,6 +20,28 @@ namespace DesafioSTI.Services
                 context.SaveChanges();
             }
         }
+        public void EditDoente(int id, Doente novoEstadoDoente)
+        {
+            using (var context = dbContextFactory.CreateDbContext())
+            {
+                var doenteExistente = context.Doentes.FirstOrDefault(d => d.ID == id);
 
-    }
+                if (doenteExistente != null)
+                {
+                    
+                    doenteExistente.NoDeProcesso = novoEstadoDoente.NoDeProcesso;
+                    doenteExistente.Nome = novoEstadoDoente.Nome;
+                    doenteExistente.DataNascimento = novoEstadoDoente.DataNascimento;
+                    doenteExistente.Sexo = novoEstadoDoente.Sexo;
+
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Doente não encontrado");
+                }
+            }
+        }
+
+        }
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\DesafioSTI\\DesafioSTI\\DesafioSTI.csproj": {}
+    "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\ProjetoSTI\\DesafioSTI\\DesafioSTI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\DesafioSTI\\DesafioSTI\\DesafioSTI.csproj": {
+    "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\ProjetoSTI\\DesafioSTI\\DesafioSTI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\DesafioSTI\\DesafioSTI\\DesafioSTI.csproj",
+        "projectUniqueName": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\ProjetoSTI\\DesafioSTI\\DesafioSTI.csproj",
         "projectName": "DesafioSTI",
-        "projectPath": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\DesafioSTI\\DesafioSTI\\DesafioSTI.csproj",
+        "projectPath": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\ProjetoSTI\\DesafioSTI\\DesafioSTI.csproj",
         "packagesPath": "C:\\Users\\vasca\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\DesafioSTI\\DesafioSTI\\obj\\",
+        "outputPath": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\ProjetoSTI\\DesafioSTI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\vasca\\AppData\\Roaming\\NuGet\\NuGet.Config",

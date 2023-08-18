@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "K5OtrYNg1vTvlsAVLo2weA0xRkBFZdnfx0Qy0fSAjao6PfIxVCx12Mp8uFOm7kwuA2m3eHeiQXlV+YZEoyw6YA==",
+  "dgSpecHash": "JQll+qhlplX3SvMlWaaFxQ7NXuspxJstNSqIlDd9CVkmqq5nsyG8YOuhjslUYObiJTGSqB+jhc+6n0gGzRgh+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\DesafioSTI\\DesafioSTI\\DesafioSTI.csproj",
+  "projectFilePath": "C:\\Users\\vasca\\OneDrive\\Ambiente de Trabalho\\ProjetoSTI\\DesafioSTI\\DesafioSTI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vasca\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\vasca\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.10\\microsoft.data.sqlite.core.7.0.10.nupkg.sha512",

@@ -25,6 +25,36 @@
     </div>
     <button type="submit" class="btn btn-primary">Registar</button>
 </EditForm>
+<br />
+<br />
+<br />
+<h3>Editar Doente</h3>
+
+<EditForm Model="@doenteParaEditar" OnValidSubmit="EditarDoente">
+    <div class="form-group">
+        <label for="noProcesso">ID do doente</label>
+        <input type="number" class="form-control" id="idDoente" @bind="doenteParaEditar.ID" />
+    </div>
+    <div class="form-group">
+        <label for="noProcesso">No de Processo</label>
+        <input type="text" class="form-control" id="noProcesso" @bind="doenteParaEditar.NoDeProcesso" />
+    </div>
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" class="form-control" id="nome" @bind="doenteParaEditar.Nome" />
+    </div>
+    <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input type="date" class="form-control" id="dataNascimento" @bind="doenteParaEditar.DataNascimento" />
+    </div>
+    <div class="form-group">
+        <label for="sexo">Sexo</label>
+        <input type="text" class="form-control" id="sexo" @bind="doenteParaEditar.Sexo" />
+    </div>
+    <button type="submit" class="btn btn-primary">Editar</button>
+</EditForm>
+
+
 <div class="mt-3">
     @if (doenteRegistrado)
     {
@@ -38,6 +68,19 @@
         Ocorreu um erro ao registar o doente.
     </div>
     }
+    @if (Exceptionmsg != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            @Exceptionmsg
+        </div>
+    }
+    @if (doenteEditado)
+    {
+        <div class="alert alert-success" role="alert">
+            Doente Editado com sucesso
+        </div>
+    }
+
 </div>
 
 
@@ -46,8 +89,11 @@
 
 @code {
     private Doente novoDoente = new Doente();
+    private Doente doenteParaEditar = new Doente();
     private bool doenteRegistrado = false;
     private bool erroAoRegistrar = false;
+    private bool doenteEditado = false;
+    string? Exceptionmsg;
 
     private async Task RegistrarDoente()
     {
@@ -66,5 +112,21 @@
             erroAoRegistrar = true;
         }
 
+    }
+    private async Task EditarDoente()
+    {
+        try
+        {
+
+            doenteService.EditDoente(doenteParaEditar.ID, doenteParaEditar);
+            Console.WriteLine("Doente editado com sucesso!");
+            doenteEditado = true;
+
+        }
+        catch (Exception ex)
+        {
+            Exceptionmsg=$"Erro ao editar doente: {ex.Message}";
+
+        }
     }
 }
