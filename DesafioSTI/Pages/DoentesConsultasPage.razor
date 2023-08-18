@@ -1,0 +1,74 @@
+﻿@page "/doentes/idas-consultas"
+@using DesafioSTI.Data;
+@using DesafioSTI.Services; 
+
+@inject DoenteConsultaService DoenteConsultaService;
+
+<h3>Registar Ida à Consulta</h3>
+
+<div class="form-group">
+    <label for="doenteID">ID do Doente</label>
+    <input type="number" class="form-control" id="doenteID" @bind="doenteId" />
+</div>
+<div class="form-group">
+    <label for="consultaID">ID da Consulta</label>
+    <input type="number" class="form-control" id="consultaID" @bind="consultaId" />
+</div>
+<button type="button" class="btn btn-primary" @onclick="RegistarIdaConsulta">Registar Ida à Consulta</button>
+
+<h3>Verificar Ida à Consulta</h3>
+
+<div class="form-group">
+    <label for="doenteIDVerificar">ID do Doente</label>
+    <input type="number" class="form-control" id="doenteIDVerificar" @bind="doenteIdVerificar" />
+</div>
+<div class="form-group">
+    <label for="consultaIDVerificar">ID da Consulta</label>
+    <input type="number" class="form-control" id="consultaIDVerificar" @bind="consultaIdVerificar" />
+</div>
+<button type="button" class="btn btn-primary" @onclick="VerificarIdaConsulta">Verificar Ida à Consulta</button>
+
+@if (registouIda.HasValue)
+{
+    <div class="alert alert-success" role="alert">
+        Ida à consulta registada com sucesso!
+    </div>
+}
+
+@if (verificouIda.HasValue)
+{
+    <div class="alert alert-info" role="alert">
+        O doente compareceu à consulta!
+    </div>
+}
+else if (verificouIda.HasValue == false)
+{
+    <div class="alert alert-warning" role="alert">
+        O doente não compareceu à consulta.
+    </div>
+}
+
+
+@code {
+    private int doenteId;
+    private int consultaId;
+    private int doenteIdVerificar;
+    private int consultaIdVerificar;
+    private bool? registouIda;
+    private bool? verificouIda=null;
+
+    private async Task RegistarIdaConsulta()
+    {
+        DoenteConsultaService.RegistarIdaConsulta(doenteId, consultaId);
+        registouIda = true;
+        verificouIda = null;
+    }
+
+    private async Task VerificarIdaConsulta()
+    {
+        verificouIda = DoenteConsultaService.VerificarIdaConsulta(consultaIdVerificar);
+       
+        registouIda = null;
+    }
+}
+

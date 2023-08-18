@@ -1,0 +1,70 @@
+﻿@page "/Adicionar-consulta"
+@using DesafioSTI.Data 
+@using DesafioSTI.Services 
+
+@inject ConsultaService consultaService
+
+<h3>Adicionar Consulta</h3>
+
+
+
+    <div class="form-group">
+        <label for="doenteID">ID do Doente</label>
+        <input type="number" class="form-control" id="doenteID" @bind="doenteId" />
+    </div>
+    <div class="form-group">
+        <label for="data">Data</label>
+        <input type="date" class="form-control" id="data" @bind="data" />
+    </div>
+    <div class="form-group">
+        <label for="especialidade">Especialidade</label>
+        <input type="text" class="form-control" id="especialidade" @bind="especialidade" />
+    </div>
+    <button type="submit" class="btn btn-primary" @onclick="AdicionarConsulta">Adicionar Consulta</button>
+
+<div class="mt-3">
+    @if (consultaAdicionada)
+    {
+        <div class="alert alert-success" role="alert">
+            Consulta adicionada com sucesso!
+        </div>
+    }
+    @if (erroAoAdicionarConsulta)
+    {
+    <div class="alert alert-danger" role="alert">
+        Ocorreu um erro ao adicionar a consulta.
+    </div>
+    }
+</div>
+
+
+@code {
+    private int doenteId;
+    private DateTime data;
+    private string especialidade;
+    private bool consultaAdicionada = false;
+    private bool erroAoAdicionarConsulta = false;
+
+    private async Task AdicionarConsulta()
+    {
+        try
+        {
+            consultaService.AddConsulta(doenteId, data, especialidade);
+            consultaAdicionada = true;
+            erroAoAdicionarConsulta = false;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Erro ao adicionar consulta: {ex.Message}");
+            consultaAdicionada = false;
+            erroAoAdicionarConsulta = true;
+        }
+        finally
+        {
+            doenteId = 0;
+            data = DateTime.Now;
+            especialidade = string.Empty;
+        }
+    }
+}
+

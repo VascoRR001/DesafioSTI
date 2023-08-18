@@ -1,0 +1,55 @@
+﻿@page "/doentes/relatorio"
+@using DesafioSTI.Data;
+@using DesafioSTI.Services;
+
+@inject DoenteConsultaService DoenteConsultaService
+
+<h3>Relatório de Consultas por Doente</h3>
+
+<div class="form-group">
+    <label for="doenteID">ID do Doente</label>
+    <input type="number" class="form-control" id="doenteID" @bind="doenteId" />
+</div>
+<button type="button" class="btn btn-primary" @onclick="GerarRelatorio">Gerar Relatório</button>
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div class="alert alert-danger" role="alert">
+        @errorMessage
+    </div>
+}
+
+@if (relatorio != null)
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Informações do Doente</h5>
+            <p class="card-text">ID: @relatorio.Doente.ID</p>
+            <p class="card-text">No de Processo: @relatorio.Doente.NoDeProcesso</p>
+            <p class="card-text">Nome: @relatorio.Doente.Nome</p>
+            <p class="card-text">Data de Nascimento: @relatorio.Doente.DataNascimento.ToShortDateString()</p>
+            <p class="card-text">Sexo: @relatorio.Doente.Sexo</p>
+            <h5 class="card-title">Relatório de Consultas</h5>
+            <p class="card-text">Número de Consultas: @relatorio.NumeroConsultas</p>
+        </div>
+    </div>
+}
+
+@code {
+    private int doenteId;
+    private DoenteRelatorio relatorio;
+    private string errorMessage;
+
+    private async Task GerarRelatorio()
+    {
+        errorMessage = string.Empty;
+
+        try
+        {
+            relatorio = DoenteConsultaService.GerarRelatorio(doenteId);
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Ocorreu um erro ao gerar o relatório: " + ex.Message;
+        }
+    }
+}
